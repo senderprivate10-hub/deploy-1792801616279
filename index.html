@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b16">
+  <title>Deploy Test — VINZ DEV</title>
+  <style>
+    :root { color-scheme: dark; --bg:#080b16; --panel:#11182a; --text:#f4f7ff; --muted:#a9b4ce; --pink:#ff4da6; --blue:#4d8dff; --green:#39d6a1; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text); background:radial-gradient(ellipse at 15% 10%,#172d55 0,transparent 38%),radial-gradient(ellipse at 90% 85%,#401c49 0,transparent 35%),var(--bg); }
+    .card { width:min(100%,620px); padding:clamp(26px,6vw,48px); border:1px solid #ffffff20; border-radius:28px; background:linear-gradient(145deg,#151d31ed,#0d1221f2); box-shadow:0 28px 90px #0009; text-align:center; }
+    .orb { width:84px;height:84px;margin:0 auto 22px;border-radius:26px;display:grid;place-items:center;font-size:40px;background:linear-gradient(135deg,var(--blue),var(--pink));box-shadow:0 12px 38px #6c65ff55; }
+    .eyebrow { color:#9bb8ff;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:800; }
+    h1 { margin:12px 0;font-size:clamp(30px,7vw,48px);letter-spacing:-.04em;line-height:1.05; }
+    p { color:var(--muted);line-height:1.7;margin:12px auto;max-width:460px; }
+    .status { display:inline-flex;align-items:center;gap:9px;margin:18px 0 8px;padding:10px 15px;border-radius:999px;background:#39d6a11a;border:1px solid #39d6a155;color:#83f0c8;font-size:14px;font-weight:750; }
+    .dot { width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green); }
+    .details { margin-top:26px;padding:16px;border-radius:16px;background:#ffffff08;border:1px solid #ffffff12;text-align:left; }
+    .row { display:flex;justify-content:space-between;gap:16px;padding:8px 0;font-size:14px; }
+    .row + .row { border-top:1px solid #ffffff10; }
+    .label { color:var(--muted); }
+    .value { font-weight:700;text-align:right;overflow-wrap:anywhere; }
+    footer { margin-top:24px;font-size:12px;color:#77839f; }
+    @media (max-width:420px) { .row { flex-direction:column;gap:4px; } .value { text-align:left; } }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="orb" aria-hidden="true">🚀</div>
+    <div class="eyebrow">VINZ DEV · Deployment Check</div>
+    <h1>Website berhasil dibuka!</h1>
+    <div class="status"><span class="dot"></span> DEPLOY TEST BERHASIL</div>
+    <p>Jika halaman ini tampil, file <strong>index.html</strong> berhasil disajikan oleh hosting. Kamu bisa memakai halaman ini untuk menguji deploy Vercel atau Netlify.</p>
+    <section class="details" aria-label="Informasi pengujian">
+      <div class="row"><span class="label">File</span><span class="value">index.html</span></div>
+      <div class="row"><span class="label">Platform</span><span class="value" id="platform">Mendeteksi browser…</span></div>
+      <div class="row"><span class="label">Waktu dibuka</span><span class="value" id="opened">—</span></div>
+      <div class="row"><span class="label">Status JavaScript</span><span class="value">Aktif ✓</span></div>
+    </section>
+    <footer>Test page sederhana · Tidak mengirim data ke server</footer>
+  </main>
+  <script>
+    const host = location.hostname;
+    document.getElementById('platform').textContent =
+      host.endsWith('vercel.app') ? 'Vercel' :
+      host.endsWith('netlify.app') ? 'Netlify' :
+      host === 'localhost' ? 'Localhost' : (host || 'File lokal');
+    document.getElementById('opened').textContent = new Date().toLocaleString('id-ID');
+  </script>
+</body>
+</html>
